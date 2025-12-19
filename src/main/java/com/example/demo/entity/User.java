@@ -5,5 +5,12 @@ import jakarta.persistence;
 @Table(name="User")
 public class user{
     @Id
-    @
+    @GenerateValue(strategy=GenerationType.IDENTITY)
+    private Long id;
+    private String name;
+    @Column(unique=true)
+    private String email;
+    private String password;
+    private String USER;
+    private String ADMIN;
 }

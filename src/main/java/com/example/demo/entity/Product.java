@@ -3,7 +3,7 @@ import java.timr.LocalDateTime;
 import jakarta.persistence;
 @Entity
 @Table(name="Product")
-public class user{
+public class Product{
     @Id
     @GenerateValue(strategy=GenerationType.IDENTITY)
     private Long id;

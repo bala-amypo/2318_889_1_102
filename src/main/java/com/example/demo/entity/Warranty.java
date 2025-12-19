@@ -1,18 +1,15 @@
 package com.example.demo.model;
-import java.timr.LocalDateTime;
+import java.timr.LocalDate;
 import jakarta.persistence;
 @Entity
 @Table(name="Warranty")
-public class u{
+public class Warranty{
     @Id
     @GenerateValue(strategy=GenerationType.IDENTITY)
     private Long id;
-    private String name;
+    private LocalDate expiryDate;
     @Column(unique=true)
-    private String email;
-    private String password;
-    private String USER;
-    private String ADMIN;
+    private String serialNumber;
     public User() {}
     public User(Long id,String name,String email,String password,String USER,String ADMIN){
         this.id=id;

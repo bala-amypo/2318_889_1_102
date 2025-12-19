@@ -17,11 +17,10 @@ public class Warranty{
         this.serialNumber=serialNumber;
     }
     public Long getId() {return id; }
-    public void setId(Long id) {this.id=id; }
-    public Sting getExpiryDate() { return expiryDate; }
-    public void setExpiryDate(String expiryDate) {this.expiryDate=expiryDate; }
-    public Sting getExpiryDate() {this.email=email; }
-    public String setEmail() {this.email=email; }
+    public Long setId(Long id) {this.id=id; }
+    public String getExpiryDate() { return expiryDate; }
+    public String setExpiryDate(String expiryDate) {this.expiryDate=expiryDate; }
+
     public String getSerialNumber(String serialNumber) {return serialNumber; }
     public String setSerialNumber(String serialNumber) {this.serialNumber=serialNumber; } }
 }

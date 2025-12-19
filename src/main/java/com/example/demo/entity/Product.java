@@ -28,6 +28,6 @@ public class user{
     public String setBrand() {this.brand=brand; }
     public String getModelNumber(String modelNumber) {this.modelNumber=modelNumber; }
     public String setModelNumber(String modelNumber) {this.modelNumber=modelNumber; }
-    public String getCategory(String USER) {this.USER=USER; }
-    public String setCategory(String USER) {this.USER=USER; }
+    public String getCategory(String category) {this.category=category; }
+    public String setCategory(String category) {this.category=category; }
 }

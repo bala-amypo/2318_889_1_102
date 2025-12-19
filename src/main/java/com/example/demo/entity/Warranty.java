@@ -10,18 +10,15 @@ public class Warranty{
     private LocalDate expiryDate;
     @Column(unique=true)
     private String serialNumber;
-    public User() {}
-    public User(Long id,String name,String email,String password,String USER,String ADMIN){
+    public Warranty() {}
+    public Warranty(Long id,LocalDate expiryDate,String serialNumber){
         this.id=id;
-        this.name=name;
-        this.email=email;
-        this.password=password;
-        this.USER=USER;
-        this.ADMIN=ADMIN;
+        this.expiryDate=expiryDate;
+        this.serialNumber=serialNumber;
     }
     public Long getId() {return id; }
     public void setId(Long id) {this.id=id; }
-    public Sting getName() { return name; }
+    public Sting getExpiryDate() { return name; }
     public void setName(String name) {this.name=name; }
     public Sting getEmail() {this.email=email; }
     public String setEmail() {this.email=email; }

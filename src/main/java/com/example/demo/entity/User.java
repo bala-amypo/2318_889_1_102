@@ -13,4 +13,13 @@ public class user{
     private String password;
     private String USER;
     private String ADMIN;
+    public User() {}
+    public User(Long id,String name,String email,String password,String USER,String ADMIN){
+        this.id=id;
+        this.name=name;
+        this.email=email;
+        this.password=password;
+        this.USER=USER;
+        this.ADMIN=ADMIN;
+    }
 }

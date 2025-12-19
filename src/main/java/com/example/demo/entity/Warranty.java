@@ -8,19 +8,33 @@ public class Warranty{
     @GenerateValue(strategy=GenerationType.IDENTITY)
     private Long id;
     private LocalDate expiryDate;
+    public Warranty(Long id, com.example.demo.entity.LocalDate expiryDate, String serialNumber) {
+        this.id = id;
+        this.expiryDate = expiryDate;
+        this.serialNumber = serialNumber;
+    }
     @Column(unique=true)
     private String serialNumber;
-    public Warranty() {}
-    public Warranty(Long id,LocalDate expiryDate,String serialNumber){
-        this.id=id;
-        this.expiryDate=expiryDate;
-        this.serialNumber=serialNumber;
+    public Long getId() {
+        return id;
     }
-    public Long getId() {return id; }
-    public void setId(Long id) {this.id=id; }
-    public String getExpiryDate() { return expiryDate; }
-    public void setExpiryDate(String expiryDate) {this.expiryDate=expiryDate; }
+    public void setId(Long id) {
+        this.id = id;
+    }
+    public LocalDate getExpiryDate() {
+        return expiryDate;
+    }
+    public void setExpiryDate(LocalDate expiryDate) {
+        this.expiryDate = expiryDate;
+    }
+    public String getSerialNumber() {
+        return serialNumber;
+    }
+    public void setSerialNumber(String serialNumber) {
+        this.serialNumber = serialNumber;
+    }
+    public Warranty() {
+    }
 
-    public String getSerialNumber(String serialNumber) {return serialNumber; }
-    public void setSerialNumber(String serialNumber) {this.serialNumber=serialNumber; } }
+   
 }

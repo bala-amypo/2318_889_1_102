@@ -26,8 +26,8 @@ public class Product{
     public void setName(String name) {this.name=name; }
     public Sting getBrand() {return brand; }
     public String setBrand() {this.brand=brand; }
-    public String getModelNumber(String modelNumber) {this.modelNumber=modelNumber; }
+    public String getModelNumber() {retrun modelNumber; }
     public String setModelNumber(String modelNumber) {this.modelNumber=modelNumber; }
-    public String getCategory(String category) {this.category=category; }
+    public String getCategory(}
     public String setCategory(String category) {this.category=category; }
 }

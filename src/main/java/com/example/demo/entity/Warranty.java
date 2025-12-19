@@ -17,10 +17,10 @@ public class Warranty{
         this.serialNumber=serialNumber;
     }
     public Long getId() {return id; }
-    public Long setId(Long id) {this.id=id; }
+    public void setId(Long id) {this.id=id; }
     public String getExpiryDate() { return expiryDate; }
-    public String setExpiryDate(String expiryDate) {this.expiryDate=expiryDate; }
+    public void setExpiryDate(String expiryDate) {this.expiryDate=expiryDate; }
 
     public String getSerialNumber(String serialNumber) {return serialNumber; }
-    public String setSerialNumber(String serialNumber) {this.serialNumber=serialNumber; } }
+    public void setSerialNumber(String serialNumber) {this.serialNumber=serialNumber; } }
 }

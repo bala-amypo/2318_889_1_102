@@ -27,9 +27,9 @@ public class User{
     public Sting getName() { return name; }
     public void setName(String name) {this.name=name; }
     public Sting getEmail() {this.email=email; }
-    public String setEmail() {this.email=email; }
+    public void setEmail() {this.email=email; }
     public String getPassword(String password) {this.password=password; }
-    public String setPassword(String password) {this.password=password; }
+    public S setPassword(String password) {this.password=password; }
     public String getUser(String USER) {this.USER=USER; }
     public String setUser(String USER) {this.USER=USER; }
     public String getAdmin(String ADMIN) {this.ADMIN=ADMIN; }

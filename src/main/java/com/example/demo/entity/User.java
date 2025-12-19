@@ -30,5 +30,8 @@ public class user{
     public String setEmail() {this.email=email; }
     public String getPassword(String password) {this.password=password; }
     public String setPassword(String password) {this.password=password; }
-    
+    public String getUser(String USER) {this.USER=USER; }
+    public String setUser(String USER) {this.USER=USER; }
+    public String getAdmin(String ADMIN) {this.ADMIN=ADMIN; }
+    public String setAdmin(String ADMIN) {this.ADMIN=ADMIN; }
 }

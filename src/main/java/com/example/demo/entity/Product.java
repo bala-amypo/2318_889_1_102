@@ -17,20 +17,17 @@ public class user{
         this.id=id;
         this.name=name;
         this.brand=brand;
-        this.password=;
-        this.USER=USER;
-        this.ADMIN=ADMIN;
+        this.modelNumber=modelNumber;
+        this.category=category;
     }
     public Long getId() {return id; }
     public void setId(Long id) {this.id=id; }
     public Sting getName() { return name; }
     public void setName(String name) {this.name=name; }
-    public Sting getEmail() {this.email=email; }
-    public String setEmail() {this.email=email; }
-    public String getPassword(String password) {this.password=password; }
-    public String setPassword(String password) {this.password=password; }
-    public String getUser(String USER) {this.USER=USER; }
-    public String setUser(String USER) {this.USER=USER; }
-    public String getAdmin(String ADMIN) {this.ADMIN=ADMIN; }
-    public String setAdmin(String ADMIN) {this.ADMIN=ADMIN; }
+    public Sting getBrand() {this.brand=brand; }
+    public String setBrand() {this.brand=brand; }
+    public String getModelNumber(String modelNumber) {this.modelNumber=modelNumber; }
+    public String setModelNumber(String modelNumber) {this.modelNumber=modelNumber; }
+    public String getCategory(String USER) {this.USER=USER; }
+    public String setCategory(String USER) {this.USER=USER; }
 }

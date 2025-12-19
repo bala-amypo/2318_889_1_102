@@ -24,7 +24,7 @@ public class Product{
     public void setId(Long id) {this.id=id; }
     public Sting getName() { return name; }
     public void setName(String name) {this.name=name; }
-    public Sting getBrand() {this.brand=brand; }
+    public Sting getBrand() {return brand; }
     public String setBrand() {this.brand=brand; }
     public String getModelNumber(String modelNumber) {this.modelNumber=modelNumber; }
     public String setModelNumber(String modelNumber) {this.modelNumber=modelNumber; }

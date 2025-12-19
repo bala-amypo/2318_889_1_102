@@ -18,8 +18,8 @@ public class Warranty{
     }
     public Long getId() {return id; }
     public void setId(Long id) {this.id=id; }
-    public Sting getExpiryDate() { return name; }
-    public void setName(String name) {this.name=name; }
+    public Sting getExpiryDate() { return expiryDate; }
+    public void setExpiryDate(String expiryDate) {this.expiryDate=expiryDate; }
     public Sting getEmail() {this.email=email; }
     public String setEmail() {this.email=email; }
     public String getPassword(String password) {this.password=password; }

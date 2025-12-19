@@ -22,5 +22,10 @@ public class user{
         this.USER=USER;
         this.ADMIN=ADMIN;
     }
+    public Long getId() {return id; }
+    public void setId(Long id) {this.id=id; }
+    public Sting getName() { return name; }
+    public void setName(String name) {this.name=name; }
+    public Sting getEmail() {this.email=email; }
     
 }

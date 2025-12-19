@@ -28,6 +28,6 @@ public class Product{
     public String setBrand() {this.brand=brand; }
     public String getModelNumber() {retrun modelNumber; }
     public String setModelNumber(String modelNumber) {this.modelNumber=modelNumber; }
-    public String getCategory(}
+    public String getCategory() {return category; }
     public String setCategory(String category) {this.category=category; }
 }

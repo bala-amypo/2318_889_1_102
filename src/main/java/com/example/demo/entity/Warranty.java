@@ -20,12 +20,8 @@ public class Warranty{
     public void setId(Long id) {this.id=id; }
     public Sting getExpiryDate() { return expiryDate; }
     public void setExpiryDate(String expiryDate) {this.expiryDate=expiryDate; }
-    public Sting getEmail() {this.email=email; }
+    public Sting getExpiryDate() {this.email=email; }
     public String setEmail() {this.email=email; }
-    public String getPassword(String password) {this.password=password; }
-    public String setPassword(String password) {this.password=password; }
-    public String getUser(String USER) {this.USER=USER; }
-    public String setUser(String USER) {this.USER=USER; }
-    public String getAdmin(String ADMIN) {this.ADMIN=ADMIN; }
-    public String setAdmin(String ADMIN) {this.ADMIN=ADMIN; }
+    public String getSerialNumber(String serialNumber) {return serialNumber; }
+    public String setSerialNumber(String serialNumber) {this.serialNumber=serialNumber; } }
 }

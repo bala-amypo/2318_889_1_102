@@ -27,5 +27,8 @@ public class user{
     public Sting getName() { return name; }
     public void setName(String name) {this.name=name; }
     public Sting getEmail() {this.email=email; }
+    public String setEmail() {this.email=email; }
+    public String getPassword(String password) {this.password=password; }
+    public String setPassword(String password) {this.password=password; }
     
 }

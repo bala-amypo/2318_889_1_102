@@ -22,4 +22,5 @@ public class user{
         this.USER=USER;
         this.ADMIN=ADMIN;
     }
+    
 }

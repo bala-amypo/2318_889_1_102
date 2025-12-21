@@ -1,14 +1,14 @@
 package com.example.demo.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
 
-@Configuration
+@Component
 @ConfigurationProperties(prefix = "jwt")
 public class JwtProperties {
 
     private String secret;
-    private Long expirationMs;
+    private long expiration;
 
     public String getSecret() {
         return secret;
@@ -18,11 +18,11 @@ public class JwtProperties {
         this.secret = secret;
     }
 
-    public Long getExpirationMs() {
-        return expirationMs;
+    public long getExpiration() {
+        return expiration;
     }
 
-    public void setExpirationMs(Long expirationMs) {
-        this.expirationMs = expirationMs;
+    public void setExpiration(long expiration) {
+        this.expiration = expiration;
     }
 }

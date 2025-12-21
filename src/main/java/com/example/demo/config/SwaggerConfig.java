@@ -1,20 +1,29 @@
 package com.example.demo.config;
 
-import io.swagger.v3.oas.models.OpenAPI;
-import io.swagger.v3.oas.models.servers.Server;
+import io.swagger.v3.oas.models.*;
+import io.swagger.v3.oas.models.info.Info;
+import io.swagger.v3.oas.models.security.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import java.util.List;
 
 @Configuration
-public class OpenApiConfig {
+public class SwaggerConfig {
 
     @Bean
-    public OpenAPI customOpenAPI() {
+    public OpenAPI openAPI() {
+
+        SecurityScheme bearerScheme = new SecurityScheme()
+                .type(SecurityScheme.Type.HTTP)
+                .scheme("bearer")
+                .bearerFormat("JWT");
+
         return new OpenAPI()
-                // You need to change the port as per your server
-                .servers(List.of(
-                        new Server().url("https://9005.vs.amypo.ai")
-                ));
-        }
+                .info(new Info()
+                        .title("Digital Warranty Tracker API")
+                        .description("API documentation")
+                        .version("1.0"))
+                .addSecurityItem(new SecurityRequirement().addList("bearerAuth"))
+                .components(new Components()
+                        .addSecuritySchemes("bearerAuth", bearerScheme));
+    }
 }

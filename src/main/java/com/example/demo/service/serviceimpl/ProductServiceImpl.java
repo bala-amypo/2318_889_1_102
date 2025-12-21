@@ -1,3 +1,12 @@
+package com.example.demo.service.serviceimpl;
+
+import com.example.demo.entity.Product;
+import com.example.demo.repository.ProductRepository;
+import com.example.demo.service.ProductService;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
 @Service
 public class ProductServiceImpl implements ProductService {
 
@@ -8,13 +17,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Product addProduct(Product product) {
-        if (product.getModelNumber() == null || product.getModelNumber().isBlank()) {
-            throw new RuntimeException("Model number required");
-        }
-        if (product.getCategory() == null || product.getCategory().isBlank()) {
-            throw new RuntimeException("Category required");
-        }
+    public Product saveProduct(Product product) {
         return repo.save(product);
     }
 

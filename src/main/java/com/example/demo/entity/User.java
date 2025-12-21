@@ -1,13 +1,14 @@
 package com.example.demo.entity;
 
-
-import lombok.Data;
-
 import jakarta.persistence.*;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
-@Data
-
+@Getter
+@Setter
+@Builder  // <-- This generates User.builder()
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,5 +16,4 @@ public class User {
     private String email;
     private String password;
     private String role;
-
 }

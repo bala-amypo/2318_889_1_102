@@ -27,10 +27,10 @@ public class AlertLogServiceImpl implements AlertLogService {
         Warranty warranty = warrantyRepository.findById(warrantyId)
                 .orElseThrow(() -> new RuntimeException("Warranty not found"));
 
-        AlertLog log = AlertLog.builder()
-                .warranty(warranty)
-                .message(message)
-                .build();
+        AlertLog log = new AlertLog();
+        log.setWarranty(warranty);
+        log.setMessage(message);
+
 
         return alertLogRepository.save(log);
     }

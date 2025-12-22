@@ -6,11 +6,6 @@ import lombok.*;
 import java.time.LocalDate;
 
 @Entity
-@Getter @Setter
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
-@Table(uniqueConstraints = @UniqueConstraint(columnNames = "serialNumber"))
 public class Warranty {
 
     @Id

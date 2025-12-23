@@ -14,11 +14,10 @@ public class Product {
     private String modelNumber;
     private String category;
 
-    // Default (no-args) constructor
     public Product() {
     }
 
-    // Parameterized constructor
+
     public Product(Long id, String name, String brand,
                    String modelNumber, String category) {
         this.id = id;

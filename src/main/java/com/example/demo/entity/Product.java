@@ -14,11 +14,11 @@ public class Product {
     private String modelNumber;
     private String category;
 
-    // ✅ Default (no-args) constructor
+    // Default (no-args) constructor
     public Product() {
     }
 
-    // ✅ Parameterized constructor
+    // Parameterized constructor
     public Product(Long id, String name, String brand,
                    String modelNumber, String category) {
         this.id = id;
@@ -28,7 +28,7 @@ public class Product {
         this.category = category;
     }
 
-    // ✅ Getters and Setters
+    //  Getters and Setters
     public Long getId() {
         return id;
     }

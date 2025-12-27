@@ -1,71 +1,40 @@
 package com.example.demo.entity;
 
 import jakarta.persistence.*;
+import lombok.*;
+
+import java.util.List;
 
 @Entity
+@Table(name = "users")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String email;
-    private String password;
-    private String role;
     private String name;
 
-    // ✅ Default (no-args) constructor
-    public User() {
-    }
+    @Column(unique = true)
+    private String email;
 
-    // ✅ Parameterized constructor
-    public User(Long id, String email, String password, String role, String name) {
+    private String password;
+
+    private String role;
+
+    @OneToMany(mappedBy = "user")
+    private List<Warranty> warranties;
+
+    public User(Long id, String name, String email, String password, String role) {
         this.id = id;
+        this.name = name;
         this.email = email;
         this.password = password;
         this.role = role;
-        this.name = name;
-    }
-
-    // ✅ Getters and Setters
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    // ⚠️ Tip: hash password before storing
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 }

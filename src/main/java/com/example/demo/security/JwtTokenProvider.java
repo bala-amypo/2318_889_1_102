@@ -1,58 +1,65 @@
-// package com.example.demo.security;
+package com.example.demo.security;
 
-// import com.example.demo.config.JwtProperties;
-// import com.example.demo.entity.User;
-// import io.jsonwebtoken.*;
-// import io.jsonwebtoken.security.Keys;
-// import org.springframework.stereotype.Component;
+import com.example.demo.config.JwtProperties;
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jws;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.security.Keys;
 
-// import java.security.Key;
-// import java.util.Date;
+import java.security.Key;
+import java.util.Date;
 
-// @Component
-// public class JwtTokenProvider {
+import org.springframework.stereotype.Component;
 
-//     private final JwtProperties jwtProperties;
-//     private final Key key;
+@Component
+public class JwtTokenProvider {
 
-//     public JwtTokenProvider(JwtProperties jwtProperties) {
-//         this.jwtProperties = jwtProperties;
-//         this.key = Keys.hmacShaKeyFor(jwtProperties.getSecret().getBytes());
-//     }
+    private final JwtProperties properties;
 
-//     public String generateToken(User user) {
+    public JwtTokenProvider(JwtProperties properties) {
+        this.properties = properties;
+    }
 
-//         Date now = new Date();
-//         Date expiry = new Date(now.getTime() + jwtProperties.getExpirationMs());
+    private Key getSigningKey() {
+        return Keys.hmacShaKeyFor(properties.getSecret().getBytes());
+    }
 
-//         return Jwts.builder()
-//                 .setSubject(user.getEmail())
-//                 .claim("userId", user.getId())
-//                 .claim("role", user.getRole())
-//                 .setIssuedAt(now)
-//                 .setExpiration(expiry)
-//                 .signWith(key, SignatureAlgorithm.HS256)
-//                 .compact();
-//     }
+    public String createToken(Long userId, String email, String role) {
 
-//     public String getEmailFromToken(String token) {
-//         return parseClaims(token).getSubject();
-//     }
+        if (properties.getExpirationMs() == null) {
+            throw new IllegalStateException("JWT expirationMs is not configured");
+        }
 
-//     public boolean validateToken(String token) {
-//         try {
-//             parseClaims(token);
-//             return true;
-//         } catch (JwtException | IllegalArgumentException ex) {
-//             return false;
-//         }
-//     }
+        Date now = new Date();
+        Date expiry = new Date(now.getTime() + properties.getExpirationMs());
 
-//     private Claims parseClaims(String token) {
-//         return Jwts.parserBuilder()
-//                 .setSigningKey(key)
-//                 .build()
-//                 .parseClaimsJws(token)
-//                 .getBody();
-//     }
-// }
+        return Jwts.builder()
+                .claim("userId", userId)
+                .claim("email", email)
+                .claim("role", role)
+                .setIssuedAt(now)
+                .setExpiration(expiry)
+                .signWith(getSigningKey())
+                .compact();
+    }
+
+
+    public boolean validateToken(String token) {
+        try {
+            Jwts.parserBuilder()
+                    .setSigningKey(getSigningKey())
+                    .build()
+                    .parseClaimsJws(token);
+            return true;
+        } catch (Exception ex) {
+            return false;
+        }
+    }
+
+    public Jws<Claims> getClaims(String token) {
+        return Jwts.parserBuilder()
+                .setSigningKey(getSigningKey())
+                .build()
+                .parseClaimsJws(token);
+    }
+}

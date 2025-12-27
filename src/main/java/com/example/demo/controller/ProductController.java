@@ -4,12 +4,13 @@ import com.example.demo.entity.Product;
 import com.example.demo.service.ProductService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/products")
+@RequestMapping("/products")
 @Tag(name = "Products")
 public class ProductController {
 
@@ -20,14 +21,14 @@ public class ProductController {
     }
 
     @PostMapping
-    @Operation(summary = "Add new product")
-    public Product addProduct(@RequestBody Product product) {
-        return productService.addProduct(product);
+    @Operation(summary = "Add a product")
+    public ResponseEntity<Product> addProduct(@RequestBody Product product) {
+        return ResponseEntity.ok(productService.addProduct(product));
     }
 
     @GetMapping
-    @Operation(summary = "Get all products")
-    public List<Product> getAllProducts() {
-        return productService.getAllProducts();
+    @Operation(summary = "List all products")
+    public ResponseEntity<List<Product>> getAll() {
+        return ResponseEntity.ok(productService.getAllProducts());
     }
 }

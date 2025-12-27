@@ -1,8 +1,17 @@
 package com.example.demo.entity;
 
 import jakarta.persistence.*;
+import lombok.*;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
+@Table(name = "alert_schedules")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@JsonIgnoreProperties(value = {"id", "warranty"}, allowSetters = false)
 public class AlertSchedule {
 
     @Id
@@ -13,52 +22,5 @@ public class AlertSchedule {
     private Warranty warranty;
 
     private Integer daysBeforeExpiry;
-
     private Boolean enabled;
-
-    // ✅ Default (no-args) constructor
-    public AlertSchedule() {
-    }
-
-    // ✅ Parameterized constructor
-    public AlertSchedule(Long id, Warranty warranty,
-                         Integer daysBeforeExpiry, Boolean enabled) {
-        this.id = id;
-        this.warranty = warranty;
-        this.daysBeforeExpiry = daysBeforeExpiry;
-        this.enabled = enabled;
-    }
-
-    // ✅ Getters and Setters
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Warranty getWarranty() {
-        return warranty;
-    }
-
-    public void setWarranty(Warranty warranty) {
-        this.warranty = warranty;
-    }
-
-    public Integer getDaysBeforeExpiry() {
-        return daysBeforeExpiry;
-    }
-
-    public void setDaysBeforeExpiry(Integer daysBeforeExpiry) {
-        this.daysBeforeExpiry = daysBeforeExpiry;
-    }
-
-    public Boolean getEnabled() {
-        return enabled;
-    }
-
-    public void setEnabled(Boolean enabled) {
-        this.enabled = enabled;
-    }
 }

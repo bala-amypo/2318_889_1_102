@@ -1,4 +1,4 @@
-package com.example.demo.service.serviceimpl;
+package com.example.demo.service.impl;
 
 import com.example.demo.entity.Product;
 import com.example.demo.repository.ProductRepository;
@@ -10,19 +10,25 @@ import java.util.List;
 @Service
 public class ProductServiceImpl implements ProductService {
 
-    private final ProductRepository repo;
+    private final ProductRepository productRepository;
 
-    public ProductServiceImpl(ProductRepository repo) {
-        this.repo = repo;
+    public ProductServiceImpl(ProductRepository productRepository) {
+        this.productRepository = productRepository;
     }
 
     @Override
     public Product addProduct(Product product) {
-        return repo.save(product);
+        if (product.getModelNumber() == null || product.getModelNumber().isBlank()) {
+            throw new IllegalArgumentException("Model number required");
+        }
+        if (product.getCategory() == null || product.getCategory().isBlank()) {
+            throw new IllegalArgumentException("Category required");
+        }
+        return productRepository.save(product);
     }
 
     @Override
     public List<Product> getAllProducts() {
-        return repo.findAll();
+        return productRepository.findAll();
     }
 }

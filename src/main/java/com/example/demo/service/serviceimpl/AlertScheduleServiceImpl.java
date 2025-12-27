@@ -2,6 +2,7 @@ package com.example.demo.service.impl;
 
 import com.example.demo.entity.AlertSchedule;
 import com.example.demo.entity.Warranty;
+import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.repository.AlertScheduleRepository;
 import com.example.demo.repository.WarrantyRepository;
 import com.example.demo.service.AlertScheduleService;
@@ -12,38 +13,33 @@ import java.util.List;
 @Service
 public class AlertScheduleServiceImpl implements AlertScheduleService {
 
-    private final AlertScheduleRepository alertScheduleRepository;
+    private final AlertScheduleRepository scheduleRepository;
     private final WarrantyRepository warrantyRepository;
 
-    public AlertScheduleServiceImpl(AlertScheduleRepository alertScheduleRepository,
+    public AlertScheduleServiceImpl(AlertScheduleRepository scheduleRepository,
                                     WarrantyRepository warrantyRepository) {
-        this.alertScheduleRepository = alertScheduleRepository;
+        this.scheduleRepository = scheduleRepository;
         this.warrantyRepository = warrantyRepository;
     }
 
     @Override
     public AlertSchedule createSchedule(Long warrantyId, AlertSchedule schedule) {
-
-        // Validation: daysBeforeExpiry > 0
-        if (schedule.getDaysBeforeExpiry() == null || schedule.getDaysBeforeExpiry() <= 0) {
-            throw new RuntimeException("daysBeforeExpiry must be greater than 0");
-        }
-
         Warranty warranty = warrantyRepository.findById(warrantyId)
-                .orElseThrow(() -> new RuntimeException("Warranty not found"));
-
-        schedule.setWarranty(warranty);
-
-        // Default enabled = true if not provided
-        if (schedule.getEnabled() == null) {
-            schedule.setEnabled(true);
+                .orElseThrow(() -> new ResourceNotFoundException("Warranty not found"));
+        if (schedule.getDaysBeforeExpiry() == null || schedule.getDaysBeforeExpiry() < 0) {
+            throw new IllegalArgumentException("daysBeforeExpiry must be >= 0");
         }
-
-        return alertScheduleRepository.save(schedule);
+        schedule.setWarranty(warranty);
+        if (schedule.getEnabled() == null) {
+            schedule.setEnabled(Boolean.TRUE);
+        }
+        return scheduleRepository.save(schedule);
     }
 
     @Override
     public List<AlertSchedule> getSchedules(Long warrantyId) {
-        return alertScheduleRepository.findByWarrantyId(warrantyId);
+        warrantyRepository.findById(warrantyId)
+                .orElseThrow(() -> new ResourceNotFoundException("Warranty not found"));
+        return scheduleRepository.findByWarrantyId(warrantyId);
     }
 }
